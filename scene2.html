@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scene 2 - Panorama Tambang Emas</title>
+  <script src="js/aframe.min.js"></script>
+  <script src="js/components.js"></script>
+</head>
+
+<body>
+  <a-scene>
+    <a-assets timeout="5000">
+      <img id="sky360" src="assets/panorama.jpg" />
+    </a-assets>
+
+    <a-sky src="#sky360" rotation="0 -90 0"></a-sky>
+
+    <a-entity id="panel1" visible="false" position="-3 2.5 -5" look-at-camera>
+      <a-plane color="#000" opacity="0.8" width="4" height="1"></a-plane>
+      <a-text value="Terowongan Utama\nAkses urat mineral." color="#FFF" align="center" position="0 0 0.05"></a-text>
+    </a-entity>
+    <a-sphere color="#FFD700" radius="0.3" position="-3 1.6 -5" class="clickable" float="amplitude: 0.2; speed: 1.5"
+      hover-color="hoverColor: #FFF; originalColor: #FFD700" toggle-visible="target: #panel1">
+    </a-sphere>
+    <a-text value="Terowongan Utama" color="#FFD700" position="-3 1 -5" width="4" align="center"
+      look-at-camera></a-text>
+
+    <a-entity id="panel2" visible="false" position="3 2.5 -5" look-at-camera>
+      <a-plane color="#000" opacity="0.8" width="4" height="1"></a-plane>
+      <a-text value="Deposit Emas\nKandungan emas tinggi." color="#FFF" align="center" position="0 0 0.05"></a-text>
+    </a-entity>
+    <a-sphere color="#FFD700" radius="0.3" position="3 1.6 -5" class="clickable" float="amplitude: 0.2; speed: 1.5"
+      hover-color="hoverColor: #FFF; originalColor: #FFD700" toggle-visible="target: #panel2">
+    </a-sphere>
+    <a-text value="Deposit Emas" color="#FFD700" position="3 1 -5" width="4" align="center" look-at-camera></a-text>
+
+    <a-entity id="panelBahaya" visible="false" position="0 2.8 -4" look-at-camera>
+      <a-plane color="#330000" opacity="0.9" width="5.5" height="1.5"></a-plane>
+      <a-text value="AWAS!\nStruktur batuan rapuh.\nSEGERA KELUAR, TAMBANG AKAN RUNTUH!" color="#FF4500" align="center"
+        position="0 0 0.05"></a-text>
+    </a-entity>
+    <a-box color="#FF0000" depth="0.4" height="0.4" width="0.4" position="0 1.6 -4" class="clickable"
+      spinner="speed: 1.5; axis: y" hover-color="hoverColor: #8B0000; originalColor: #FF0000"
+      toggle-visible="target: #panelBahaya">
+    </a-box>
+    <a-text value="Area Berbahaya" color="#FF0000" position="0 1 -4" width="4" align="center" look-at-camera></a-text>
+
+
+    <a-text value="Scene 2: Panorama Tambang Emas" color="#FFD700" position="-3 4.2 -6" width="8" align="center"
+      look-at-camera></a-text>
+    <a-link href="index.html" title="Kembali ke Awal" position="-5 1.6 -3" class="clickable"></a-link>
+
+    <a-light type="ambient" color="#555" intensity="0.7"></a-light>
+    <a-light type="point" color="#FFD700" intensity="0.8" position="0 4 0"></a-light>
+
+    <a-camera position="0 1.6 0" wasd-controls="fly: false; acceleration: 30">
+      <a-cursor color="#FFF" fuse="true" fuse-timeout="2500" raycaster="far: 20; objects: .clickable"
+        animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2500; from: 1 1 1; to: 0.1 0.1 0.1"
+        animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1">
+      </a-cursor>
+    </a-camera>
+  </a-scene>
+</body>
+
+</html>

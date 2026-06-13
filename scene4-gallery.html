@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <title>Scene 4 - Galeri 3D Peralatan Tambang</title>
+    <script src="js/aframe.min.js"></script>
+    <script src="js/components.js"></script>
+</head>
+
+<body>
+    <a-scene>
+        <a-assets timeout="5000">
+            <a-asset-item id="model-satu" src="assets/model.glb"></a-asset-item>
+            <a-asset-item id="model-dua" src="assets/modeldua.glb"></a-asset-item>
+            <a-asset-item id="model-tiga" src="assets/modeltiga.glb"></a-asset-item>
+            <img id="gambar-portal" src="assets/panorama.jpg">
+        </a-assets>
+
+        <a-sky color="#121A24"></a-sky>
+        <a-plane rotation="-90 0 0" width="30" height="30" color="#1C232D"></a-plane>
+
+        <a-camera>
+            <a-cursor fuse="true" fuse-timeout="2500" raycaster="objects: .clickable" color="#FFF"
+                animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2500; from: 1 1 1; to: 0.1 0.1 0.1"
+                animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1">
+            </a-cursor>
+        </a-camera>
+
+        <a-text value="GALERI PERALATAN TAMBANG EMAS" align="center" position="0 3.5 -4" color="#FFD700" scale="2 2 2"
+            look-at-camera></a-text>
+
+        <a-entity position="-3 1.3 -4">
+            <a-entity gltf-model="#model-satu" scale="0.5 0.5 0.5" class="clickable"
+                animation__putar="property: rotation; startEvents: click; to: 0 360 0; dur: 2000"></a-entity>
+            <a-text value="Gerobak Tambang" align="center" position="0 -1.0 0" color="#FFF" scale="1.5 1.5 1.5"
+                look-at-camera></a-text>
+        </a-entity>
+
+        <a-entity position="0 1.3 -4">
+            <a-entity gltf-model="#model-dua" scale="0.5 0.5 0.5" class="clickable"
+                animation__putar="property: rotation; startEvents: click; to: 0 360 0; dur: 2000"></a-entity>
+            <a-text value="Helm Tambang" align="center" position="0 -1.0 0" color="#FFF" scale="1.5 1.5 1.5"
+                look-at-camera></a-text>
+        </a-entity>
+
+        <a-entity position="3 1.3 -4">
+            <a-entity gltf-model="#model-tiga" scale="0.15 0.15 0.15" class="clickable"
+                animation__putar="property: rotation; startEvents: click; to: 0 360 0; dur: 2000"></a-entity>
+            <a-text value="Beliung Tambang" align="center" position="0 -1.0 0" color="#FFF" scale="1.5 1.5 1.5"
+                look-at-camera></a-text>
+        </a-entity>
+
+        <a-entity position="0 1.5 3" rotation="0 180 0">
+            <a-link href="index.html" image="#gambar-portal" class="clickable"></a-link>
+            <a-text value="Kembali ke Awal" align="center" position="0 1.2 0" color="#FFD700" scale="2 2 2"
+                look-at-camera></a-text>
+        </a-entity>
+
+        <a-light type="ambient" color="#666" intensity="0.8"></a-light>
+        <a-light type="point" color="#FFF" intensity="1" position="0 3.5 -2"></a-light>
+    </a-scene>
+</body>
+
+</html>

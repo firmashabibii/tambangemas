@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scene 3: Model 3D Tambang Emas</title>
+  <script src="js/aframe.min.js"></script>
+  <script src="js/components.js"></script>
+</head>
+
+<body>
+  <a-scene renderer="shadowMapEnabled: true">
+    <a-assets timeout="5000">
+      <a-asset-item id="tambang-model" src="assets/model.glb"></a-asset-item>
+    </a-assets>
+
+    <a-entity id="model3d" gltf-model="#tambang-model" position="0 0 -4" rotation="0 0 0" scale="1 1 1"
+      class="clickable" shadow="cast: true; receive: true" animation__click="
+        property: rotation;
+        to: 0 360 0;
+        startEvents: click;
+        dur: 2000;
+        easing: easeOutElastic">
+    </a-entity>
+
+    <a-text value="Gerobak Mineral Tambang" color="#FFD700" position="-3 3.8 -6" width="8" align="center">
+    </a-text>
+
+    <a-entity position="-3.5 1.5 -4">
+      <a-plane color="#1A1000" opacity="0.9" width="2.8" height="1.6"></a-plane>
+      <a-text value="Kontrol:\n• Tatap 2.5 detik = klik\n• Klik model = putar\n• WASD = gerak (PC)\n• Drag = lihat (HP)"
+        color="#FFD166" width="2.4" position="0 0 0.01" align="center">
+      </a-text>
+    </a-entity>
+
+    <a-link href="index.html" title="← Kembali ke Awal" position="6 1.6 -5" class="clickable"></a-link>
+
+    <a-link href="scene4-gallery.html" title="Galeri Tambang Emas!!" position="4 1.6 -5" class="clickable"></a-link>
+
+    <a-link href="scene2.html" title="Ke Panorama" position="2 1.6 -5" class="clickable"></a-link>
+
+    <a-sky color="#1A1000"></a-sky>
+
+    <a-plane rotation="-90 0 0" width="30" height="30" color="#2b1a04" shadow="receive: true">
+    </a-plane>
+
+    <a-sphere color="#FFD700" radius="0.1" position="-3 3 -5" pulse="speed: 1.5; intensity: 1.2"></a-sphere>
+    <a-light type="point" color="#FFD700" intensity="0.8" distance="8" position="-3 3 -5"></a-light>
+
+    <a-sphere color="#FFD700" radius="0.1" position="3 3 -5" pulse="speed: 1.2; intensity: 1.2"></a-sphere>
+    <a-light type="point" color="#FFD700" intensity="0.8" distance="8" position="3 3 -5"></a-light>
+
+    <a-light type="ambient" color="#555" intensity="0.8"></a-light>
+    <a-light type="directional" color="#FFFFFF" intensity="1.2" position="-1 3 1" cast-shadow="true"></a-light>
+
+    <a-camera position="0 1.6 0" wasd-controls="fly: false; acceleration: 30">
+      <a-cursor color="#FFF" fuse="true" fuse-timeout="2500" raycaster="far: 15; objects: .clickable"
+        animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2500; from: 1 1 1; to: 0.1 0.1 0.1"
+        animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1">
+      </a-cursor>
+    </a-camera>
+  </a-scene>
+</body>
+
+</html>
